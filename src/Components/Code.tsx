@@ -5,21 +5,14 @@ import AceEditor from "react-ace"
 import "ace-builds/src-noconflict/mode-javascript"
 import "ace-builds/src-noconflict/theme-monokai"
 
-import saferEval from 'safer-eval'
+import { CodeChecker } from '../System/CodeChecker'
 
 export default function Code({ content }) {
 
     function onChange(newValue) {
         try {
-            console.log(saferEval(newValue, {
-                console: {
-                    log: (x) => console.log('haha', x)
-                }
-            }))
-        } catch(err) {
-            console.log(err)
-        }
-        // console.log("change", newValue);
+            CodeChecker.check(newValue)
+        } catch(e) {}
     }
 
     return (
@@ -28,6 +21,8 @@ export default function Code({ content }) {
             theme="monokai"
             onChange={onChange}
             fontSize="1.5rem"
+            height="100%"
+            width="auto"
             editorProps={{ $blockScrolling: true }}
             value={ content }
         ></AceEditor>

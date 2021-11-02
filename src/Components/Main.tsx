@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import GlobalState from '../GlobalState'
 import '../Styles/default.less'
 import { Exercise } from '../Types/Exercise'
 import Code from './Code'
@@ -7,11 +8,10 @@ import Result from './Result'
 
 export default function Main() {
 
-    let [ ex, setEx ] = useState<Exercise>({
-        title: 'yeet',
-        description: `# The question`,
-        initCode: 'console.log("yeetuth")'
-    })
+    let [ ex, setEx ] = GlobalState.useState<Exercise>('currentExercise', null)
+    // let [ logs ] = GlobalState.useState<Array<string>>('log')
+
+    if(!ex) return <main></main>
 
     return (
         <main>
