@@ -8,7 +8,9 @@ export default function Result() {
 
     return (
         <div className="results">
-            <div className="log">{ logs.map((x,i) => <div key={i}>{x}</div>)}</div>
+            <pre>
+                <div className="log">{ logs.map((x,i) => <div key={i}>{x}</div>)}</div>
+            </pre>
             <div className={"button next " + (succes ? ' succes' : '')}>NEXT</div>
         </div>)
 }

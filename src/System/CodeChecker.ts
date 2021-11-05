@@ -17,20 +17,19 @@ export class CodeChecker {
                 }
             })
             
-            GlobalState.setState<Array<string>>('log', [...logs])
-
+            
             let currentExercise = GlobalState.getState<Exercise>('currentExercise')
-
+            
             let result = currentExercise.succes(context, logs)
-
-            console.log(result)
-
+            
             if((result as ExerciseError).error) {
                 GlobalState.setState('succes', false)
+                logs.push((result as ExerciseError).error)
             } else {
                 GlobalState.setState('succes', true)
             }
-
+            
+            GlobalState.setState<Array<string>>('log', [...logs])
         } catch(e) {
             let result = { error: e.split('\n')[0]}
             GlobalState.setState('succes', false)
