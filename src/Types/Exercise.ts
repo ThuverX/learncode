@@ -10,5 +10,6 @@ export interface Exercise {
     title: string,
     description: string,
     initCode: string,
-    succes: (context?: ExerciseContext, logs?: Array<string> ) => boolean | ExerciseError
+    log?: string,
+    succes: (code: any, context?: ExerciseContext, logs?: Array<string> ) => boolean | ExerciseError
 }

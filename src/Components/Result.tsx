@@ -1,5 +1,6 @@
 import React from 'react'
 import GlobalState from '../GlobalState'
+import { CodeChecker } from '../System/CodeChecker'
 
 export default function Result() {
 
@@ -11,6 +12,6 @@ export default function Result() {
             <pre>
                 <div className="log">{ logs.map((x,i) => <div key={i}>{x}</div>)}</div>
             </pre>
-            <div className={"button next " + (succes ? ' succes' : '')}>NEXT</div>
+            <div className={"button next " + (succes ? ' succes' : '')} onClick={ () => CodeChecker.next() }>VOLGENDE</div>
         </div>)
 }

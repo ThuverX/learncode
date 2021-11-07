@@ -24,7 +24,7 @@ export default class GlobalState {
     }
 
     public static existsState(key: string): boolean {
-        return !!this.getState(key)
+        return this.getState(key) !== undefined
     }
 
     public static once<T>(event: string, callback: (value: T) => void) {
@@ -40,7 +40,7 @@ export default class GlobalState {
     }
 
     public static useState<T>(key: string, defaultValue?: T) : Dispatch<T> {
-        if(defaultValue) this.prepareState(key, defaultValue)
+        if(defaultValue !== undefined) this.prepareState(key, defaultValue)
 
         let [val, setVal] = useState<T>(this.getState(key))
 
