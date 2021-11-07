@@ -141,7 +141,7 @@ Gebruik \`push\` en \`pop\`
 
 GlobalState.prepareState<Array<string>>('log', [])
 GlobalState.prepareState<boolean>('succes', false)
-GlobalState.prepareState<number>('currentExercise', 2)
+GlobalState.prepareState<number>('currentExercise', -1)
 
 ReactDOM.render(
     React.createElement(Main),
